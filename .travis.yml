@@ -15,7 +15,7 @@ install:
   - docker ps -a
   - wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
   - go get -u gopkg.in/alecthomas/gometalinter.v1
-  - GOPATH=$HOME/gopath gometalinter --install
+  # - GOPATH=$HOME/gopath gometalinter --install
   - go get github.com/mattn/goveralls
   - gpm install
   - ifconfig
@@ -28,7 +28,7 @@ script:
   - pwd
   - cd tests
   - go test ./...
-  - gometalinter ./...
+#  - gometalinter ./...
   - cd $HOME/gopath/src/customer && $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:
   # - docker build -t apalahitunamanya2/blog .

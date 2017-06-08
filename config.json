@@ -1,0 +1,28 @@
+{
+  "DisableAll": true,
+  "Enable": [
+    "structcheck",
+    "aligncheck",
+    "deadcode",
+    "gocyclo",
+    "ineffassign",
+    "gotype",
+    "varcheck",
+    "interfacer",
+    "goconst",
+    "gosimple",
+    "golint"
+  ],
+  "TakeOutTemp": [
+      "dupl",
+      "goimports",
+      "staticcheck",
+      "errcheck",
+      "unparam",
+      "unused",
+      "misspell",
+      "lll",
+      "gas",
+      "safesql"
+  ]
+}

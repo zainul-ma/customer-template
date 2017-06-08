@@ -35,6 +35,7 @@ func CredMq() string {
 	return mq
 }
 
+//ConnectMq .
 func ConnectMq(mq string) (*amqp.Connection, error) {
 	conn, err := amqp.Dial(mq)
 	CheckErr(err, "Failed to connect to RabbitMQ")

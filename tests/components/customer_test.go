@@ -150,10 +150,10 @@ func TestCustomerUpdate(t *testing.T) {
 		t.Error("-")
 	}
 
-	byteJson, _ := json.Marshal(v)
+	byteJSON, _ := json.Marshal(v)
 
 	r, _ := http.NewRequest("PUT", "/v1/tbl_customer/"+ID.Hex(),
-		bytes.NewBuffer(byteJson))
+		bytes.NewBuffer(byteJSON))
 
 	w := httptest.NewRecorder()
 	beego.BeeApp.Handlers.ServeHTTP(w, r)
@@ -172,10 +172,10 @@ func TestCustomerAdd(t *testing.T) {
 
 	_, v := buildRecord()
 
-	byteJson, _ := json.Marshal(v)
+	byteJSON, _ := json.Marshal(v)
 
 	r, _ := http.NewRequest("POST", "/v1/tbl_customer",
-		bytes.NewBuffer(byteJson))
+		bytes.NewBuffer(byteJSON))
 
 	w := httptest.NewRecorder()
 	beego.BeeApp.Handlers.ServeHTTP(w, r)

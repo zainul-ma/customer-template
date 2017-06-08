@@ -28,6 +28,8 @@ func CredMq() string {
 		mq = beego.AppConfig.String("mq::dev")
 	} else if envOs == "prod" {
 		mq = beego.AppConfig.String("mq::prod")
+	} else if envOs == "testCi" {
+		mq = beego.AppConfig.String("mq::testCi")
 	}
 
 	return mq

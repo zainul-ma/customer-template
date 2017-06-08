@@ -27,15 +27,15 @@ script:
   - pwd
   - cd tests && go test ./...
   - cd $HOME/gopath/src/customer
-  - gometalinter ./...
-  # - $HOME/gopath/bin/goveralls -service=travis-ci
+  # - gometalinter ./...
+  - $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:
   # - docker build -t apalahitunamanya2/blog .
   # - if [ "$TRAVIS_BRANCH" == "master" ]; then
   #   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   #   docker push apalahitunamanya2/blog;
   #   fi
-# notifications:
-#   slack:
-#     rooms:
-#       - tnindo:UQ4e43faD5fHRZOuDEoWoF88#travis-ci
+notifications:
+  slack:
+    rooms:
+      - tnindo:rZLNlfCwMFJDF68W1CtvtGoLfWN4lSbmq#travis-ci

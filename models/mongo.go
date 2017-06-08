@@ -1,6 +1,6 @@
 package models
 
-import(
+import (
 	"github.com/astaxie/beego"
 
 	"gopkg.in/mgo.v2"
@@ -10,30 +10,33 @@ import(
 )
 
 var envOs = os.Getenv("GOENV")
+
 // DbCred call DB Cred
 func DbCred() string {
 	dbURL := ""
-    if envOs == "local" {
-    	dbURL = beego.AppConfig.String("mongodb::local")
-	}else if envOs == "dev" {
+	if envOs == "local" {
+		dbURL = beego.AppConfig.String("mongodb::local")
+	} else if envOs == "dev" {
 		dbURL = beego.AppConfig.String("mongodb::dev")
-	}else if envOs == "prod" {
+	} else if envOs == "prod" {
 		dbURL = beego.AppConfig.String("mongodb::prod")
+	} else if envOs == "testCi" {
+		dbURL = beego.AppConfig.String("mongodb::testCi")
 	}
 
-    return dbURL
+	return dbURL
 }
 
 // ConnectMongo to connect Mongo DB
 func ConnectMongo() *mgo.Session {
-	dbURL := DbCred();
-	session,err := mgo.Dial(dbURL)
-	CheckErr(err,"error connect mongo DB")
+	dbURL := DbCred()
+	session, err := mgo.Dial(dbURL)
+	CheckErr(err, "error connect mongo DB")
 
 	if envOs != "prod" {
 		mgo.SetDebug(true)
 	}
-	session.SetMode(mgo.Monotonic,true)
+	session.SetMode(mgo.Monotonic, true)
 
 	return session
 }
@@ -42,7 +45,6 @@ func ConnectMongo() *mgo.Session {
 func CheckErr(err error, msg string) {
 	if err != nil {
 		beego.Warning(msg)
-   		beego.Critical(err)
+		beego.Critical(err)
 	}
 }
-

@@ -25,8 +25,8 @@ script:
   - ls -lah
   - go env
   - pwd
-  - cd tests && go test ./...
-  - cd $HOME/gopath/src/customer
+  - cd tests
+  - go test ./...
   # - gometalinter ./...
   - $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:

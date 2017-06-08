@@ -1,6 +1,7 @@
 language: go
 go:
   - 1.8.1
+  - tip
 services:
   - docker
 before_install:

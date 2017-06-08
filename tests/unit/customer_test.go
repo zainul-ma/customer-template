@@ -3,11 +3,8 @@ package test
 import (
 	"customer/models"
 	structCustomer "customer/structs"
-	"path/filepath"
-	"runtime"
 	"testing"
 
-	"github.com/astaxie/beego"
 	. "github.com/smartystreets/goconvey/convey"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -32,10 +29,6 @@ func buildRecord() (bson.ObjectId, structCustomer.Customer) {
 
 func init() {
 	removeAll()
-	_, file, _, _ := runtime.Caller(1)
-	apppath, _ := filepath.Abs(filepath.Dir(
-		filepath.Join(file, "../../"+string(filepath.Separator))))
-	beego.TestBeegoInit(apppath)
 }
 
 func TestAddCustomer(t *testing.T) {

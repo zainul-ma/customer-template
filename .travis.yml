@@ -5,8 +5,8 @@ services:
   - docker
 before_install:
   - cd $HOME/gopath/src/
-  - git clone --depth=50 --branch=master https://github.com/zainul-ma/blog.git
-  - cd $HOME/gopath/src/blog
+  - git clone --depth=50 --branch=master https://github.com/zainul-ma/customer-template.git
+  - cd $HOME/gopath/src/customer-template
 install:
   - go get -u gopkg.in/alecthomas/gometalinter.v1
   - go get github.com/mattn/goveralls

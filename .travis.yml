@@ -8,6 +8,8 @@ before_install:
   - git clone --depth=50 --branch=master https://github.com/zainul-ma/customer-template.git customer
   - cd $HOME/gopath/src/customer
 install:
+  - docker run -p 27017:27017 -d --name mongo mongo
+  - docker run -p 5672:5672 -d --name rabbitmq rabbitmq
   - wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
   - go get -u gopkg.in/alecthomas/gometalinter.v1
   - go get github.com/mattn/goveralls

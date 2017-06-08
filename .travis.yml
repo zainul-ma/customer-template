@@ -5,9 +5,8 @@ services:
   - docker
 before_install:
   - cd $HOME/gopath/src/
-  - git clone --depth=50 --branch=master https://github.com/zainul-ma/customer-template.git
-  # just for verify the directory
-  - cd $HOME/gopath/src/customer-template
+  - git clone --depth=50 --branch=master https://github.com/zainul-ma/customer-template.git customer
+  - cd $HOME/gopath/src/customer
 install:
   - wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
   - go get -u gopkg.in/alecthomas/gometalinter.v1
@@ -16,12 +15,12 @@ install:
 script:
   - cd $HOME/gopath/
   - ls -lah
-  - cd $HOME/gopath/src/customer-template
+  - cd $HOME/gopath/src/customer
   - ls -lah
   - go env
   - pwd
   - cd tests && go test ./...
-  - cd $HOME/gopath/src/customer-template
+  - cd $HOME/gopath/src/customer
   - gometalinter --vendor ./...
   # - $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:

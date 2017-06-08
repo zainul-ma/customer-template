@@ -2,6 +2,7 @@ package test
 
 import (
 	"customer/models"
+	_ "customer/routers"
 	"fmt"
 	"path/filepath"
 	"runtime"

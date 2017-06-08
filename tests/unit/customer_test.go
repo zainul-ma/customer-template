@@ -5,9 +5,10 @@ import (
 	structCustomer "customer/structs"
 	"testing"
 
-	"gopkg.in/mgo.v2/bson"
+	_ "customer/routers"
 
 	. "github.com/smartystreets/goconvey/convey"
+	"gopkg.in/mgo.v2/bson"
 )
 
 func removeAll() {

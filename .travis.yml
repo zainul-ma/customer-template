@@ -7,6 +7,8 @@ before_install:
   - cd $HOME/gopath/src/
   - git clone --depth=50 --branch=master https://github.com/zainul-ma/customer-template.git customer
   - cd $HOME/gopath/src/customer
+  - echo 'export GOENV=testCi' >> ~/.bashrc
+  - source ~/.bashrc 
 install:
   - docker run -p 27017:27017 -d --name mongo mongo
   - docker run -p 5672:5672 -d --name rabbitmq rabbitmq

@@ -15,6 +15,7 @@ install:
   - cd $HOME/gopath/
   - ls -lah
 script:
+  - cd $HOME/gopath/src/customer-template
   - ls -lah
   - go env
   - pwd

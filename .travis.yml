@@ -20,7 +20,8 @@ script:
   - ls -lah
   - go env
   - pwd
-  - go test
+  - cd tests && go test ./...
+  - cd $HOME/gopath/src/customer-template
   - gometalinter --vendor ./...
   # - $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:

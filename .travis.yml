@@ -9,14 +9,14 @@ before_install:
   - cd $HOME/gopath/src/customer
   - echo 'export GOENV=testCi' >> ~/.bashrc
   - source ~/.bashrc
+  - go get -u gopkg.in/alecthomas/gometalinter.v1
+  - go get github.com/mattn/goveralls
 install:
   - docker run -p 27017:27017 -d --name mongo mongo
   - docker run -p 5672:5672 -d --name rabbitmq rabbitmq
   - docker ps -a
   - wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
-  - go get -u gopkg.in/alecthomas/gometalinter.v1
   # - GOPATH=$HOME/gopath gometalinter --install
-  - go get github.com/mattn/goveralls
   - gpm install
   - ifconfig
 script:
@@ -26,9 +26,10 @@ script:
   - ls -lah
   - go env
   - pwd
-  - go test
+  - go test ./... -coverprofile=profile.cov
 #  - gometalinter ./...
-  - cd $HOME/gopath/src/customer && $HOME/gopath/bin/goveralls -service=travis-ci
+  - cd $HOME/gopath/src/customer
+  - $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:
   # - docker build -t apalahitunamanya2/blog .
   # - if [ "$TRAVIS_BRANCH" == "master" ]; then

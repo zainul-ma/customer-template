@@ -15,7 +15,7 @@ install:
   - docker ps -a
   - wget https://raw.githubusercontent.com/pote/gpm/v1.4.0/bin/gpm && chmod +x gpm && sudo mv gpm /usr/local/bin
   - go get -u gopkg.in/alecthomas/gometalinter.v1
-  - gometalinter --install
+  - GOPATH=$HOME/gopath gometalinter --install
   - go get github.com/mattn/goveralls
   - gpm install
   - ifconfig

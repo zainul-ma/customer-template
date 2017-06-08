@@ -1,0 +1,31 @@
+language: go
+go:
+  - 1.8.1
+services:
+  - docker
+before_install:
+  - cd $HOME/gopath/src/
+  - git clone --depth=50 --branch=master https://github.com/zainul-ma/blog.git
+  - cd $HOME/gopath/src/blog
+install:
+  - go get -u gopkg.in/alecthomas/gometalinter.v1
+  - go get github.com/mattn/goveralls
+  - go get -u github.com/Masterminds/glide
+  - glide install
+script:
+  - ls -lah
+  - go env
+  - pwd
+  - go test $(glide novendor)
+  #- gometalinter --vendor ./...
+  # - $HOME/gopath/bin/goveralls -service=travis-ci
+# after_success:
+  # - docker build -t apalahitunamanya2/blog .
+  # - if [ "$TRAVIS_BRANCH" == "master" ]; then
+  #   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  #   docker push apalahitunamanya2/blog;
+  #   fi
+# notifications:
+#   slack:
+#     rooms:
+#       - tnindo:UQ4e43faD5fHRZOuDEoWoF88#travis-ci

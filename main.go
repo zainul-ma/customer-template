@@ -7,14 +7,15 @@ import (
 	"github.com/astaxie/beego/logs"
 )
 
+// LogFile .
 func LogFile() string {
-    pathLog := beego.AppConfig.String("log::file")
-    return pathLog
+	pathLog := beego.AppConfig.String("log::file")
+	return pathLog
 }
 
 func init() {
 	logFile := LogFile()
-	logs.SetLogger(logs.AdapterFile,`{"filename":"`+logFile+`","level":7,"maxlines":0,"maxsize":0,"daily":true,"maxdays":10}`)
+	logs.SetLogger(logs.AdapterFile, `{"filename":"`+logFile+`","level":7,"maxlines":0,"maxsize":0,"daily":true,"maxdays":10}`)
 }
 
 func main() {

@@ -27,8 +27,8 @@ script:
   - pwd
   - cd tests
   - go test ./...
-  # - gometalinter ./...
-  - $HOME/gopath/bin/goveralls -service=travis-ci
+  - gometalinter ./...
+  - cd $HOME/gopath/src/customer && $HOME/gopath/bin/goveralls -service=travis-ci
 # after_success:
   # - docker build -t apalahitunamanya2/blog .
   # - if [ "$TRAVIS_BRANCH" == "master" ]; then
